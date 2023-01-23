@@ -1,0 +1,27 @@
+pipeline {
+    agent {
+        label 'slave-1'
+    }
+//     stages {
+//         stage('clone') {
+//             steps {
+//                 sh 'git clone git@github.com:SANJAI16299/CI-CD-scripts.git'
+//             }
+//         }
+        stage('Build') {
+            steps {
+                sh 'cd node-js-sample-pipeline ; npm install'
+                //sh 'sudo apt install npm -y'
+                //sh 'npm install'
+                sh 'pwd'
+            }
+        }
+        /*stage('store') {
+            steps {
+                //sh 'pwd'
+                //sh 'mkdir binary-folder'
+                //sh 'mv node_modules/* /home/ubuntu/'
+            }
+        }*/
+    }
+}

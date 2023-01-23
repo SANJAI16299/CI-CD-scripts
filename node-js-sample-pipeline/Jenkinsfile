@@ -16,12 +16,12 @@ pipeline {
                 sh 'pwd'
             }
         }
-        /*stage('store') {
+        stage('store') {
             steps {
-                //sh 'pwd'
+                sh 'pwd'
                 //sh 'mkdir binary-folder'
-                //sh 'mv node_modules/* /home/ubuntu/'
+                //sh 'mv /home/ubuntu/workspace/Pipeline-job-1/node-js-sample-pipeline/node_modules/* /home/ubuntu/'
             }
-        }*/
+        }
 }
 }

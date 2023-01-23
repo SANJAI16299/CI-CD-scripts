@@ -19,8 +19,8 @@ pipeline {
         stage('store') {
             steps {
                 sh 'pwd'
-                //sh 'mkdir binary-folder'
-                //sh 'mv /home/ubuntu/workspace/Pipeline-job-1/node-js-sample-pipeline/node_modules/* /home/ubuntu/'
+                sh 'cd ; mkdir binary-folder'
+                sh 'mv /home/ubuntu/workspace/Pipeline-job-1/node-js-sample-pipeline/node_modules/* /home/ubuntu/binary-folder'
             }
         }
 }

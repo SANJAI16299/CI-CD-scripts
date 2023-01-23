@@ -2,7 +2,7 @@ pipeline {
     agent {
         label 'slave-1'
     }
-//     stages {
+                       stages {
 //         stage('clone') {
 //             steps {
 //                 sh 'git clone git@github.com:SANJAI16299/CI-CD-scripts.git'
@@ -23,5 +23,5 @@ pipeline {
                 //sh 'mv node_modules/* /home/ubuntu/'
             }
         }*/
-    }
+}
 }

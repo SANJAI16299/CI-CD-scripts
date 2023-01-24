@@ -1,0 +1,27 @@
+pipeline{
+    agent {
+        label 'slave-1'
+    }
+    stages{
+        stage('Download'){
+            steps{
+                script{
+                    sh 'wget https://freetestdata.com/wp-content/uploads/2022/02/Free_Test_Data-HTML-1.23-KB-1.html'
+                                   }
+            }
+
+        }
+        stage('test'){
+            steps{
+                script{
+                    sh 'sudo su'
+                    sh 'sudo cp /home/ubuntu/workspace/Test-job/Free_Test_Data-HTML-1.23-KB-1.html /var/www/html'
+                    sh 'cd ; rm -rf index.nginx-debian.html'
+                    sh 'sudo mv /var/www/html/Free_Test_Data-HTML-1.23-KB-1.html /var/www/html/index.html'
+                    sh 'sudo systemctl restart nginx'
+                }
+            }
+        }
+    }
+
+}

@@ -10,6 +10,7 @@ pipeline {
          stage('Build image') {
              steps {
                  sh 'sudo su'
+                 sh 'sudo docker rm -f ${CON_NAME}'
                  sh 'sudo docker pull ${IMG_NAME}'
                  sh 'sudo docker run -d -p 80:80 --name ${CON_NAME} ${IMG_NAME}'
                  sh 'sudo docker ps -a'

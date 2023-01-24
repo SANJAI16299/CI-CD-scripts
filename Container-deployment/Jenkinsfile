@@ -17,7 +17,7 @@ pipeline {
          }
         stage('Update-nginx') {
             steps {
-                sh 'cp /home/ubuntu/workspace/Test-job-2/update-nginx/index.html ${CON_NAME}:/usr/share/nginx/html'
+                sh 'sudo docker cp /home/ubuntu/workspace/Test-job-3/Container-deployment/index.html ${CON_NAME}:/usr/share/nginx/html'
             }
         }
 }

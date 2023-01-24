@@ -7,7 +7,7 @@ pipeline{
             steps{
                 script{
                     sh 'sudo su'
-                    sh 'sudo cp /home/ubuntu/workspace/Test-job-2/sample-index.html /var/www/html'
+                    sh 'sudo cp /home/ubuntu/workspace/Test-job-2/update-nginx/sample-index.html /var/www/html'
                     sh 'cd ; rm -rf index.nginx-debian.html'
                     sh 'sudo mv /var/www/html/sample-index.html /var/www/html/index.html'
                     sh 'sudo systemctl restart nginx'

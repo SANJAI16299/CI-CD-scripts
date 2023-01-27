@@ -11,9 +11,9 @@ pipeline{
             steps{
                 script{
                     sh 'sudo su'
-                    sh 'sudo docker stop ${CON_NAME}'
-                    sh 'sudo docker rm -f ${CON_NAME}'
-                    sh 'sudo docker rmi ${IMG_NAME}'
+                    //sh 'sudo docker stop ${CON_NAME}'
+                    //sh 'sudo docker rm -f ${CON_NAME}'
+                    //sh 'sudo docker rmi ${IMG_NAME}'
                     sh 'bash build.sh'
                     
                                    }

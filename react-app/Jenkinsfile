@@ -11,11 +11,11 @@ pipeline{
         stage('Build'){
             steps{
                 script{
-                    sh 'sudo su'
+                    //sh 'sudo su'
                     //sh 'sudo docker stop ${CON_NAME}'
                     //sh 'sudo docker rm -f ${CON_NAME}'
                     //sh 'sudo docker rmi ${IMG_NAME}'
-                    sh 'bash Sample-react-app/react-app/build.sh'
+                    sh 'cd /var/jenkins_home/workspace/Sample-react-app/react-app/ ; bash build.sh'
                     
                                    }
             }
@@ -24,7 +24,7 @@ pipeline{
         stage('Deploy'){
             steps{
                 script{
-                    sh 'bash Sample-react-app/react-app/deploy.sh'
+                    sh 'cd /var/jenkins_home/workspace/Sample-react-app/react-app/ ; bash deploy.sh'
 
                 }
             }

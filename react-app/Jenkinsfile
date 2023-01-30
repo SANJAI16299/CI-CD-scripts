@@ -15,7 +15,7 @@ pipeline{
                     //sh 'sudo docker stop ${CON_NAME}'
                     //sh 'sudo docker rm -f ${CON_NAME}'
                     //sh 'sudo docker rmi ${IMG_NAME}'
-                    sh 'bash build.sh'
+                    sh 'cd react-app ; bash build.sh'
                     
                                    }
             }
@@ -24,7 +24,7 @@ pipeline{
         stage('Deploy'){
             steps{
                 script{
-                    sh 'bash deploy.sh'
+                    sh 'cd react-app ; bash deploy.sh'
 
                 }
             }

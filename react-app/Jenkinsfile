@@ -1,7 +1,8 @@
 pipeline{
-    agent {
-        label 'slave-1'
-    }
+    agent any
+    //agent {
+      //  label 'slave-1'
+    //}
     environment {
         CON_NAME = 'react-con'
         IMG_NAME = 'sanjai:v1'

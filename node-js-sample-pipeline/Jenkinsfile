@@ -16,10 +16,11 @@ pipeline {
                 sh 'pwd'
             }
         }
-        stage('store') {
+        stage('upload') {
             steps {
                 sh 'pwd'
                 sh 'cd ; mkdir binary-folder'
+                //sh 'cd /home/ubuntu/binary-folder ; rm -rf binary-folder'
                 sh 'mv /home/ubuntu/workspace/Pipeline-job-1/node-js-sample-pipeline/node_modules/* /home/ubuntu/binary-folder'
             }
         }

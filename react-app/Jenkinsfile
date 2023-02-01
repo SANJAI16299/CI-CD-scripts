@@ -38,7 +38,7 @@ pipeline{
         stage ('Push to Artifactory') {
                steps {
                    script {        
-                        pattern = "node_modules.tar.gz"
+                        pattern = "${REPO_NAME}.tar.gz"
                         target = "${REPO_NAME}/${Env_name}/${Version}/${REPO_NAME}.tar.gz"
                         push_to_artifactory(["$pat","$tar"])
                     }

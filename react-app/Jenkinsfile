@@ -1,5 +1,4 @@
 @Library('Libraries@main') _
-getbuilduser()
 pipeline{
     //agent any
     agent {

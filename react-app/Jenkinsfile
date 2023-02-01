@@ -3,7 +3,7 @@ pipeline{
     agent {
         label 'slave-1'
     }
-    parameters {choice (choices : ['dev' , 'qa' , 'staging' , 'prod'],description : 'Choose dev or qa or staging or prod',name : 'ENV')
+    //parameters {choice (choices : ['dev' , 'qa' , 'staging' , 'prod'],description : 'Choose dev or qa or staging or prod',name : 'ENV')
     environment {
         CON_NAME = 'react-con'
         IMG_NAME = 'sanjai:v1'

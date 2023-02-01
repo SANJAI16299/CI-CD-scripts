@@ -8,7 +8,7 @@ pipeline{
     environment {
         CON_NAME = 'react-con'
         IMG_NAME = 'sanjai:v1'
-        PROJECT_NAME = 'Demo_repo'
+        REPO_NAME = 'Demo_repo'
         Env_name = 'dev'
         Version = 'latest'
     }
@@ -21,7 +21,7 @@ pipeline{
                     sh 'sudo docker rm -f ${CON_NAME}'
                     sh 'sudo docker rmi ${IMG_NAME}'
                     sh 'cd react-app ; bash build.sh'
-                    sh "tar -zcvf node_modules.tar.gz"
+                    sh "tar -zcvf ${REPO_NAME}.tar.gz"
                     
                                    }
             }
@@ -39,8 +39,8 @@ pipeline{
                steps {
                    script {        
                         pattern = "node_modules.tar.gz"
-                        target = "${PROJECT_NAME}/latest/${params.ENVIRONMENT}/${PROJECT_NAME}.tar.gz"
-                        Push_to_Artifactory(["$pat","$tar"])
+                        target = "${REPO_NAME}/${Env_name}/${Version}/${REPO_NAME}.tar.gz"
+                        push_to_artifactory(["$pat","$tar"])
                     }
                 }
             }

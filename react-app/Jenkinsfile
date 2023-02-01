@@ -21,7 +21,7 @@ pipeline{
                     sh 'sudo docker rm -f ${CON_NAME}'
                     sh 'sudo docker rmi ${IMG_NAME}'
                     sh 'cd react-app ; bash build.sh'
-                    sh "tar -zcvf ${REPO_NAME}.tar.gz"
+                    sh "cd /home/ubuntu/workspace/Sample-react-app/react-app ; tar -zcvf ${REPO_NAME}.tar.gz /home/ubuntu/workspace/Sample-react-app/react-app/node_modules/"
                     
                                    }
             }
@@ -35,7 +35,7 @@ pipeline{
                 }
             }
         }
-        stage ('Push to Artifactory') {
+        /*stage ('Push to Artifactory') {
                steps {
                    script {        
                         pattern = "${REPO_NAME}.tar.gz"
@@ -43,7 +43,7 @@ pipeline{
                         push_to_artifactory(["$pat","$tar"])
                     }
                 }
-            }
+            } */
 
     }
 }

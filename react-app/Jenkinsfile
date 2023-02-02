@@ -22,28 +22,34 @@ pipeline{
                     sh 'sudo docker rmi ${IMG_NAME}'
                     sh 'cd react-app ; bash build.sh'
                     //sh "cd /home/ubuntu/workspace/Sample-react-app-1/react-app ; tar -zcvf ${REPO_NAME}.tar.gz /home/ubuntu/workspace/Sample-react-app-1/react-app/node_modules/"
-                    
-                                   }
+                    }
             }
 
-        }
-        stage('Deploy'){
-            steps{
-                script{
-                    sh 'cd react-app ; bash deploy.sh'
-
-                }
-            }
         }
         stage ('Push to Artifactory') {
                steps {
                    script {        
-                        pattern = "${REPO_NAME}.tar.gz"
-                        target = "${REPO_NAME}/${Env_name}/${Version}/${REPO_NAME}.tar.gz"
-                        push_to_artifactory(["$pat","$tar"])
-                    }
+                        //pattern = "${REPO_NAME}.tar.gz"
+                        //target = "${REPO_NAME}/${Env_name}/${Version}/${REPO_NAME}.tar.gz"
+                        //push_to_artifactory(["$pat","$tar"])
+                       sh 'cd ; docker save ${IMG_NAME} > ${IMG_NAME}.tar.gz'
+                       sh 'cd ; jf rt u "(*).gz" Demo_repo/dev/latest/{1}/ --recursive=false'
+                       sh 'cd ; rm -rf ${IMG_NAME}.tar.gz'
+                       sh 'docker rmi ${IMG_NAME}'
+                   }
                 }
             }
+        stage('Deploy'){
+            steps{
+                script{
+                    //sh 'jfrog rt dl "Demo_repo/dev/latest/react-ap.tar/*.gz" /home/ubuntu/workspace/Sample-react-app-1/react-app/'
+                    //sh 'cd /home/ubuntu/workspace/Sample-react-app-1/react-app/ ; docker load < ${IMG_NAME}.tar.gz' 
+                    //sh 'cd /home/ubuntu/workspace/Sample-react-app-1/react-app/ ; rm -rf ${IMG_NAME}.tar.gz'
+                    sh 'cd /home/ubuntu/workspace/Sample-react-app-1/react-app/ ; bash deploy.sh'
+
+                }
+            }
+        }
 
     }
 }

@@ -12,7 +12,7 @@ pipeline{
         Env_name = 'dev'
         Version = 'latest'
     }
-    /*stages{
+    stages{
         stage('Build'){
             steps{
                 script{
@@ -34,7 +34,7 @@ pipeline{
 
                 }
             }
-        } */
+        }
         stage ('Push to Artifactory') {
                steps {
                    script {        

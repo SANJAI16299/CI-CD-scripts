@@ -17,9 +17,9 @@ pipeline{
             steps{
                 script{
                     sh 'sudo su'
-                    sh 'sudo docker stop ${CON_NAME}'
-                    sh 'sudo docker rm -f ${CON_NAME}'
-                    sh 'sudo docker rmi ${IMG_NAME}'
+                    //sh 'sudo docker stop ${CON_NAME}'
+                    //sh 'sudo docker rm -f ${CON_NAME}'
+                    //sh 'sudo docker rmi ${IMG_NAME}'
                     sh 'cd react-app ; bash build.sh'
                     //sh "cd /home/ubuntu/workspace/Sample-react-app-1/react-app ; tar -zcvf ${REPO_NAME}.tar.gz /home/ubuntu/workspace/Sample-react-app-1/react-app/node_modules/"
                     }

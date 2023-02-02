@@ -35,7 +35,7 @@ pipeline{
                        sh 'sudo su'
                        sh 'whoami'
                        sh 'cd ; sudo docker save ${IMG_NAME} > ${IMG_NAME}.tar.gz'
-                       sh 'cd ; jf rt u ${IMG_NAME}.tar.gz Demo_repo/dev/latest/{1}/ --recursive=false'
+                       sh 'cd ; jf rt u ${IMG_NAME}.tar.gz Demo_repo/dev/latest/{1}/ --recursive=false --user=admin --password=Admin@123
                        sh 'cd ; rm -rf ${IMG_NAME}.tar.gz'
                        sh 'docker rmi ${IMG_NAME}'
                    }

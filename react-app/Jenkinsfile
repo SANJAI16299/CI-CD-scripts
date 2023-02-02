@@ -13,7 +13,7 @@ pipeline{
         Version = 'latest'
     }
     stages{
-        stage('Build'){
+        /*stage('Build'){
             steps{
                 script{
                     sh 'sudo su'
@@ -25,7 +25,7 @@ pipeline{
                     }
             }
 
-        }
+        }*/
         stage ('Push to Artifactory') {
                steps {
                    script {        
@@ -33,7 +33,8 @@ pipeline{
                         //target = "${REPO_NAME}/${Env_name}/${Version}/${REPO_NAME}.tar.gz"
                         //push_to_artifactory(["$pat","$tar"])
                        sh 'sudo su'
-                       sh 'cd ; docker save ${IMG_NAME} > ${IMG_NAME}.tar.gz'
+                       sh 'whoami'
+                       sh 'cd ; sudo docker save ${IMG_NAME} > ${IMG_NAME}.tar.gz'
                        sh 'cd ; jf rt u "(*).gz" Demo_repo/dev/latest/{1}/ --recursive=false'
                        sh 'cd ; rm -rf ${IMG_NAME}.tar.gz'
                        sh 'docker rmi ${IMG_NAME}'

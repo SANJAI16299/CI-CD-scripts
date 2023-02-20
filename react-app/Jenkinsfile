@@ -2,7 +2,7 @@
 pipeline{
     //agent any
     agent {
-        label 'slave-1'
+        label 'slave-3'
     }
     //parameters {choice (choices : ['dev' , 'qa' , 'staging' , 'prod'],description : 'Choose dev or qa or staging or prod',name : 'ENV')
     environment {

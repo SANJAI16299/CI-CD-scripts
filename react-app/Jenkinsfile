@@ -13,7 +13,7 @@ pipeline{
         Version = 'latest'
     }
     stages{
-        /*stage('Build'){
+        stage('Build'){
             steps{
                 script{
                     sh 'sudo su'
@@ -25,8 +25,8 @@ pipeline{
                     }
             }
 
-        }*/
-        stage ('Push to Artifactory') {
+        }
+        /*stage ('Push to Artifactory') {
                steps {
                    script {        
                         //pattern = "${REPO_NAME}.tar.gz"
@@ -40,7 +40,7 @@ pipeline{
                        sh 'docker rmi ${IMG_NAME}'
                    }
                 }
-            }
+            }*/
         stage('Deploy'){
             steps{
                 script{

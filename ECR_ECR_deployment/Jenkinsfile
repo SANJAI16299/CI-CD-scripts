@@ -1,0 +1,57 @@
+@Library('Libraries@main') _
+pipeline{
+    //agent any
+    agent {
+        label 'slave-3'
+    }
+    //parameters {choice (choices : ['dev' , 'qa' , 'staging' , 'prod'],description : 'Choose dev or qa or staging or prod',name : 'ENV')
+    environment {
+        AWS_ACCOUNT_ID= "714872425408"
+        AWS_DEFAULT_REGION= "us-east-2"
+        IMAGE_REPO_NAME= "demo"
+        IMAGE_TAG= "latest"
+        REPOSITORY_URI = "public.ecr.aws/z1n9k6g1/demo"
+    }
+    stages{
+        stage('Build'){
+            steps{
+                script{
+                    sh 'sudo su'
+                    //sh 'sudo docker stop ${CON_NAME}'
+                    //sh 'sudo docker rm -f ${CON_NAME}'
+                    //sh 'sudo docker rmi ${IMG_NAME}'
+                    sh 'cd react-app ; bash build.sh'
+                    //sh "cd /home/ubuntu/workspace/Sample-react-app-1/react-app ; tar -zcvf ${REPO_NAME}.tar.gz /home/ubuntu/workspace/Sample-react-app-1/react-app/node_modules/"
+                    }
+            }
+
+        }
+        /*stage ('Push to Artifactory') {
+               steps {
+                   script {        
+                        //pattern = "${REPO_NAME}.tar.gz"
+                        //target = "${REPO_NAME}/${Env_name}/${Version}/${REPO_NAME}.tar.gz"
+                        //push_to_artifactory(["$pat","$tar"])
+                       sh 'sudo su'
+                       sh 'whoami'
+                       sh 'cd ; sudo docker save ${IMG_NAME} > ${IMG_NAME}.tar.gz'
+                       sh 'cd ; jf rt u ${IMG_NAME}.tar.gz Demo_repo/dev/latest/{1}/ --recursive=false --user=admin --password=Admin@123
+                       sh 'cd ; rm -rf ${IMG_NAME}.tar.gz'
+                       sh 'docker rmi ${IMG_NAME}'
+                   }
+                }
+            }*/
+        stage('Deploy'){
+            steps{
+                script{
+                    //sh 'jfrog rt dl "Demo_repo/dev/latest/react-ap.tar/*.gz" /home/ubuntu/workspace/Sample-react-app-1/react-app/'
+                    //sh 'cd /home/ubuntu/workspace/Sample-react-app-1/react-app/ ; docker load < ${IMG_NAME}.tar.gz' 
+                    //sh 'cd /home/ubuntu/workspace/Sample-react-app-1/react-app/ ; rm -rf ${IMG_NAME}.tar.gz'
+                    sh 'cd /home/ubuntu/workspace/Sample-react-app-1/react-app/ ; bash deploy.sh'
+
+                }
+            }
+        }
+
+    }
+}

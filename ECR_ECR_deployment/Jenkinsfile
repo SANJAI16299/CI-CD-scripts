@@ -12,7 +12,7 @@ pipeline{
         AWS_DEFAULT_REGION= "us-east-2"
         IMAGE_REPO_NAME= "demo"
         IMAGE_TAG= "latest"
-        REPOSITORY_URI = "public.ecr.aws/z1n9k6g1"
+        REPOSITORY_URI = "714872425408.dkr.ecr.us-east-2.amazonaws.com/demo"
     }
     stages{
         stage('Build'){
@@ -33,6 +33,7 @@ pipeline{
                 script{
                     sh 'sudo su'
                     sh 'sudo aws ecr-public get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${REPOSITORY_URI}'
+                    //aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 714872425408.dkr.ecr.us-east-2.amazonaws.com
                     }
             }
 

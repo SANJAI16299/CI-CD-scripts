@@ -32,7 +32,7 @@ pipeline{
             steps{
                 script{
                     sh 'sudo su'
-                    sh 'aws ecr-public get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${REPOSITORY_URI}'
+                    sh 'sudo aws ecr-public get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${REPOSITORY_URI}'
                     }
             }
 
@@ -41,8 +41,8 @@ pipeline{
             steps{
                 script{
                     sh 'sudo su'
-                    sh 'docker tag ${IMG_NAME} ${REPOSITORY_URI}:${IMAGE_TAG}'
-                    sh 'docker push ${REPOSITORY_URI}:${IMAGE_TAG}'
+                    sh 'sudo docker tag ${IMG_NAME} ${REPOSITORY_URI}:${IMAGE_TAG}'
+                    sh 'sudo docker push ${REPOSITORY_URI}:${IMAGE_TAG}'
                     }
             }
 

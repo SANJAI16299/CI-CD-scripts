@@ -6,11 +6,11 @@ pipeline{
     }
     //parameters {choice (choices : ['dev' , 'qa' , 'staging' , 'prod'],description : 'Choose dev or qa or staging or prod',name : 'ENV')
     environment {
-        AWS_ACCOUNT_ID= "714872425408"
-        AWS_DEFAULT_REGION= "us-east-2"
-        IMAGE_REPO_NAME= "demo"
-        IMAGE_TAG= "latest"
-        REPOSITORY_URI = "public.ecr.aws/z1n9k6g1/demo"
+        CON_NAME = 'react-con'
+        IMG_NAME = 'sanjai:v1'
+        REPO_NAME = 'Demo_repo'
+        Env_name = 'dev'
+        Version = 'latest'
     }
     stages{
         stage('Build'){

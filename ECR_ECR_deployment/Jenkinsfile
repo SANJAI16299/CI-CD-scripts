@@ -28,7 +28,6 @@ pipeline{
             }
 
         }
-      stages{
         stage('Logging into AWS ECR'){
             steps{
                 script{
@@ -38,7 +37,6 @@ pipeline{
             }
 
         }
-       stages{
         stage('Tag & PUSH to ECR'){
             steps{
                 script{
